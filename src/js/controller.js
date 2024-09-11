@@ -11,12 +11,6 @@ import addRecipeView from './views/addRecipeView.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
-// https://forkify-api.herokuapp.com/v2
-
 const controlRecipes = async function () {
   const id = window.location.hash;
   if (!id) return;
@@ -29,7 +23,6 @@ const controlRecipes = async function () {
     //2) loading recipe
     await model.loadRecipe(id);
     const { recipe } = model.state;
-    console.log(recipe);
     //3) Rendering recipe
     recipeView.render(model.state.recipe);
   } catch (err) {
@@ -51,7 +44,6 @@ const controlSearchResult = async function () {
     await model.loadSearchResults(query);
 
     // 3) Render results
-    // resultsView.render(model.state.search.results);
     resultsView.render(model.getSearchResultsPage());
 
     // 4) Render intial pagiantion buttons
@@ -99,7 +91,6 @@ const controlAddRecipe = async function (newRecipe) {
     addRecipeView.renderSpinner();
     // Upload Recipe
     await model.uploadRecipe(newRecipe);
-    console.log(model.state.recipe);
     // Render Recipe
     recipeView.render(model.state.recipe);
     //succes message

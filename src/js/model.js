@@ -36,8 +36,6 @@ export const loadRecipe = async function (id) {
       state.recipe.bookmarked = true;
   } catch (err) {
     throw err;
-    // console.error(`${err} sdsdsd`);
-    // alert(err.message);
   }
 };
 
@@ -105,7 +103,6 @@ init();
 
 export const uploadRecipe = async function (newRecipe) {
   try {
-    console.log(Object.entries(newRecipe));
     const ingredients = Object.entries(newRecipe)
       .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
       .map(ing => {
